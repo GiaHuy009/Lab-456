@@ -17,9 +17,30 @@ namespace Lab_04.Controllers
         {
             _dbContext = new ApplicationDbContext();
         }
+
+        //Cái này là chạy HttpGet => Load dữ liệu từ Model (DB) => Controller => View
+        [HttpGet]
+        public ActionResult Create()
+        {
+            var viewModel = new CourseViewModel
+            {
+                Categories = _dbContext.Categories.ToList()
+            };
+
+            return View(viewModel);
+        }
+
+        //Cái này là HttpPost (2 action cùng tên nhưng khác chức năng) => Load dữ liệu từ View => Controller => Lưu  về Model (DB)
         [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(CourseViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                viewModel.Categories = _dbContext.Categories.ToList();
+                return View("Create", viewModel);
+            }
             var course = new Course
             {
                 LucturerID = User.Identity.GetUserId(),
