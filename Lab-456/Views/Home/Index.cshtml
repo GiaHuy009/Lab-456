@@ -38,24 +38,23 @@
 @section scripts
     {
     <script>
-        $(document).ready(function)() {
+        $(document).ready(function () {
             $(".js-toggle-attendance").click(function (e) {
                 var button = $(e.target);
-                $.post("/api/attendances", { courseID: button.attr("data-course-id") })
+                $.post("/api/attendances", { courseId: button.attr("data-course-id") })
                     .done(function () {
                         button
                             .removeClass("btn-default")
                             .addClass("btn-info")
-                            .text("Going")
+                            .text("Going");
                     })
                     .fail(function () {
                         alert("Something failed!");
                     });
             });
-
-            $(".js-toggle-attendance").click(function (e) {
+            $(".js-toggle-follow").click(function (e) {
                 var button = $(e.target);
-                $.post("/api/followings", { courseID: button.attr("data-user-id") })
+                $.post("/api/followings", { followeeId: button.attr("data-user-id") })
                     .done(function () {
                         button.text("Following");
                     })

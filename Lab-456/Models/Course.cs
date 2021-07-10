@@ -10,6 +10,7 @@ namespace Lab_456.Models
     {
         
             public int ID { get; set; }
+            public bool IsCanceled { get; set; }
             public ApplicationUser Lucturer { get; set; }
             [Required]
             public string LucturerID { get; set; }
