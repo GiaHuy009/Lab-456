@@ -2,7 +2,10 @@
 @model Lab_456.ViewModels.CoursesViewModel
 @{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<h2>Attending </h2>
 <ul class="course">
     @foreach (var course in Model.UpcomingCourses)
     {

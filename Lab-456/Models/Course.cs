@@ -17,16 +17,9 @@ namespace Lab_456.Models
             [StringLength(255)]
             public string Place { get; set; }
             public DateTime DateTime { get; set; }
-            public Category category { get; set; }
+            public Category Category { get; set; }
             [Required]
             public byte CategoryID { get; set; }
         
-    }
-    public class Category
-    {
-        public int ID { get; set; }
-        [Required]
-        [StringLength(255)]
-        public string Name { get; set; }
     }
 }
